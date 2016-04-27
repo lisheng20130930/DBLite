@@ -1,40 +1,33 @@
-#include "stdlib.h"
+#include "libos.h"
 #include "DBLite.h"
 
 
-static USR_T* newUsr(char *IMSI)
-{
-	USR_T *pUsr = (USR_T*)malloc(sizeof(USR_T));
-	memset(pUsr,0x00,sizeof(USR_T));
-	pUsr->cbGender = 0;
-	pUsr->ID = we_cmmn_strndup(IMSI,strlen(IMSI));
-	pUsr->pszNickName = we_cmmn_strndup(pUsr->ID,strlen(pUsr->ID));
-	pUsr->IMSI = we_cmmn_strndup(IMSI,strlen(IMSI));
-	
-	return pUsr;
-}
-
-
-#define IMSI "8613825468279"
+#define STZIMSI "8613825468279"
 int main(int argc, char **argv)
 {
 	DBLite_init("./");
 
-	USR_T *pUsr = DBLite_loadUsr(IMSI);
+	USR_T *pUsr = (USR_T*)DBLite_get(USRDAT,STZIMSI);
 	if(!pUsr){
-		pUsr = newUsr(IMSI);
-		DBLite_dumpUsr(pUsr);
+		pUsr = pUsr = (USR_T*)malloc(sizeof(USR_T));
+		memset(pUsr,0x00,sizeof(USR_T));
+		pUsr->cbGender = 0;
+		pUsr->ID = we_cmmn_strndup(STZIMSI,strlen(STZIMSI));
+		pUsr->pTreasure = (Treasure_t*)malloc(sizeof(Treasure_t));
+		memset(pUsr->pTreasure,0x00,sizeof(Treasure_t));
+		pUsr->pTreasure->iGold = 2000;
+		DBLite_put(USRDAT,STZIMSI,pUsr);
 	}
 	usrRelease(pUsr);
 
-	pUsr = DBLite_loadUsr(IMSI);
+	pUsr = (USR_T*)DBLite_get(USRDAT,STZIMSI);
 	usrRelease(pUsr);
 	
 	// Use the DBLite_loop in the Server Loop, to dump Dirty-DATA to DISK
 	// Here is Simple
 	DBLite_loop(0);
 
-	pUsr = DBLite_loadUsr(IMSI);
+	pUsr = (USR_T*)DBLite_get(USRDAT,STZIMSI);
 	usrRelease(pUsr);
 
 	DBLite_uint();
