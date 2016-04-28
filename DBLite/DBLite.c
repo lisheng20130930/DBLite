@@ -11,7 +11,7 @@ typedef struct _DTABLE
     int used; // 0/1
     TCHDB *db;
     char name[_NAME_MAX];
-    char path[_PATH_MAX+_NAME_MAX]; // 带路径的文件名字
+    char path[_PATH_MAX+_NAME_MAX]; // 麓酶脗路戮露碌脛脦脛录镁脙没脳脰
 }DTABLE;
 
 
@@ -158,7 +158,7 @@ static void writeInt32(char **buffer, int *len, int *pos, int v)
 static char* readBuffer(char *buffer, int *pos, int *piLen)
 {
 	int iLen = readInt32(buffer, pos);
-	if(iLen!=0){
+	if(iLen==0){
 		return NULL;
 	}
 	char *pBuffer = (char*)malloc(iLen);
@@ -166,6 +166,7 @@ static char* readBuffer(char *buffer, int *pos, int *piLen)
 	if(piLen){
 		*piLen = iLen;
 	}
+	*pos+=iLen;
 	return pBuffer;
 }
 
@@ -174,7 +175,7 @@ static void writeBuffer(char **buffer,int *len, int *pos, char *v, int iLen)
 	extendBuffer(buffer,len,*pos,iLen+4);
 	writeInt32(buffer,len,pos,iLen);
 	if(iLen!=0){
-		memcpy(buffer+*pos,v,iLen);
+		memcpy(*buffer+*pos,v,iLen);
 		*pos+=iLen;
 	}
 }
