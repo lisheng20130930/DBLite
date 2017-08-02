@@ -5,22 +5,22 @@
 
 //////////////////////////////////////////////////////////////////////////
 // Object Fields
-static DB_Field USRFieldTable[]={
-	DB_FIELD(USR_T,cbGender,DB_FIELD_TYPE_INT,0xFFFF),
-	DB_FIELD(USR_T,ID,DB_FIELD_TYPE_STRZ,0xFFFF),
-	DB_FIELD(USR_T,pTreasure,DB_FIELD_TYPE_OBJECT,1),
-	DB_FIELD_END,
+static _Field USRFieldTable[]={
+	_FIELD(USR_T,cbGender,_FIELD_TYPE_INT,0xFFFF),
+	_FIELD(USR_T,ID,_FIELD_TYPE_STRZ,0xFFFF),
+	_FIELD(USR_T,pTreasure,_FIELD_TYPE_OBJECT,1),
+	_FIELD_END,
 };
 
 
-static DB_Field TreasureFieldTable[]={
-	DB_FIELD(Treasure_t,iGold,DB_FIELD_TYPE_INT,0xFFFF),
-	DB_FIELD_END,
+static _Field TreasureFieldTable[]={
+	_FIELD(Treasure_t,iGold,_FIELD_TYPE_INT,0xFFFF),
+	_FIELD_END,
 };
 
 //////////////////////////////////////////////////////////////////////////
 // Sum
-DB_Object  BJ[]={
+DB_Object  PRO[]={
 	{USRFieldTable,sizeof(USR_T)},
 	{TreasureFieldTable,sizeof(USR_T)},
 	{NULL,0}
