@@ -5,8 +5,6 @@
 #define STZIMSI "8613825468279"
 int main(int argc, char **argv)
 {
-	DBLite_init("./");
-
 	USR_T *pUsr = (USR_T*)DBLite_get(USRDAT,STZIMSI);
 	if(!pUsr){
 		pUsr = pUsr = (USR_T*)malloc(sizeof(USR_T));
@@ -23,13 +21,10 @@ int main(int argc, char **argv)
 	pUsr = (USR_T*)DBLite_get(USRDAT,STZIMSI);
 	usrRelease(pUsr);
 	
-	// Use the DBLite_loop in the Server Loop, to dump Dirty-DATA to DISK
-	// Here is Simple
-	DBLite_loop(0);
+	DBLite_flush();
 
 	pUsr = (USR_T*)DBLite_get(USRDAT,STZIMSI);
 	usrRelease(pUsr);
 
-	DBLite_uint();
 	return 0;
 }
