@@ -241,7 +241,7 @@ static void* buffer2Obj(_Field *pTbl, int oSize, char *buffer, int iLen, int *pi
 			*((void**)((unsigned char*)pObj+pField->offset)) = readObject(buffer,iLen,&pos,pField->parm);
 			break;
 		case _FIELD_TYPE_FIXL:
-			readFixL(*((void**)((unsigned char*)pObj+pField->offset)),buffer,&pos,pField->parm);
+			readFixL((void*)((unsigned char*)pObj+pField->offset),buffer,&pos,pField->parm);
 			break;
 		default:
 			break;
@@ -281,7 +281,7 @@ static char* obj2Buffer(_Field *pTbl, void *pObj, int *piLen)
 			writeObject(&buffer,&iLen,&pos,*((void**)((unsigned char*)pObj+pField->offset)),pField->parm);
 			break;
 		case _FIELD_TYPE_FIXL:
-			writeFixL(&buffer,&iLen,&pos,*((void**)((unsigned char*)pObj+pField->offset)),pField->parm);
+			writeFixL(&buffer,&iLen,&pos,(void*)((unsigned char*)pObj+pField->offset),pField->parm);
 			break;
 		default:
 			break;
