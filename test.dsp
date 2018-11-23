@@ -218,11 +218,27 @@ SOURCE=.\DBLite.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\DBLsg.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\DBLsg.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\DBM.c
 # End Source File
 # Begin Source File
 
 SOURCE=.\DBM.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\DBPack.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\DBPack.h
 # End Source File
 # Begin Source File
 
