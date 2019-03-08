@@ -221,11 +221,11 @@ SOURCE=.\config.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\dbm.c
+SOURCE=.\DBM.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\dbm.h
+SOURCE=.\DBM.h
 # End Source File
 # Begin Source File
 
