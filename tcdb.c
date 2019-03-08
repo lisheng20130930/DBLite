@@ -1,6 +1,6 @@
 #include "libos.h"
 #include "litdb.h"
-#include "dbm.h"
+#include "DBM.h"
 #include "time.h"
 #include "assert.h"
 #include "pack.h"
