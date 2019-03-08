@@ -1,5 +1,5 @@
 #include "libos.h"
-#include "DBM.h"
+#include "dbm.h"
 #ifdef WIN32
 #include "io.h"
 #else

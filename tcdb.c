@@ -1,23 +1,24 @@
 #include "libos.h"
-#include "DBLite.h"
-#include "DBM.h"
+#include "litdb.h"
+#include "dbm.h"
 #include "time.h"
 #include "assert.h"
+#include "pack.h"
+#include "config.h"
 
 
 #define _NAME_MAX  (32)
 #define _DB_MAX    (5)
 
-typedef struct _DTABLE
-{
+
+typedef struct _DTABLE{
     int used; // 0/1
     TCHDB *db;
     char name[_NAME_MAX];
 }DTABLE;
 
 
-typedef struct _DBASE
-{
+typedef struct _DBASE{
     DTABLE arr[_DB_MAX];
 }DBASE;
 

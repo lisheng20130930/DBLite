@@ -1,5 +1,10 @@
 #include "libos.h"
-#include "DBPack.h"
+#include "litdb.h"
+#include "pack.h"
+
+
+extern DB_Object *PRO;
+extern DB_Table  *DB;
 
 
 static void extendBuffer(char **buffer,int *piLen, int iPos, int iAppendLen)

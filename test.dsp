@@ -208,46 +208,46 @@ SOURCE=..\utils\Xor.c
 SOURCE=..\utils\Xor.h
 # End Source File
 # End Group
+# Begin Group "litdb"
+
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\DBLite.c
+SOURCE=.\config.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBLite.h
+SOURCE=.\config.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBLsg.c
+SOURCE=.\dbm.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBLsg.h
+SOURCE=.\dbm.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBM.c
+SOURCE=.\litdb.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBM.h
+SOURCE=.\lsg.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBPack.c
+SOURCE=.\pack.c
 # End Source File
 # Begin Source File
 
-SOURCE=.\DBPack.h
+SOURCE=.\pack.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\DPRoto.c
+SOURCE=.\tcdb.c
 # End Source File
-# Begin Source File
-
-SOURCE=.\DPRoto.h
-# End Source File
+# End Group
 # Begin Source File
 
 SOURCE=.\test.c
