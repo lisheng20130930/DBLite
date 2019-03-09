@@ -252,6 +252,14 @@ SOURCE=.\tcdb.c
 
 SOURCE=.\test.c
 # End Source File
+# Begin Source File
+
+SOURCE=.\test_DataBase.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\test_DataBase.h
+# End Source File
 # End Group
 # Begin Group "Header Files"
 

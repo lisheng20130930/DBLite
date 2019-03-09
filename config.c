@@ -10,9 +10,9 @@ char	   *g_dataDir = NULL;
  *	must be configed before call API
  *  to regist db and obj-fingures
  */
-void litdb_register(char *dataDir, DB_Object PRO[], DB_Table DB[])
+void litdb_register(char *dataDir, DB_Object _PRO[], DB_Table _DB[])
 {
-	PRO = PRO;
-	DB = DB;
+	PRO = _PRO;
+	DB = _DB;
 	g_dataDir = dataDir;
 }
