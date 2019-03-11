@@ -2,6 +2,10 @@
 #define TEST_DATABASE_H
 
 
+/*
+ *	server test
+ */
+
 typedef struct _Product_s{
 	struct _Product_s *next;
 	int coin;

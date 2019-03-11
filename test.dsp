@@ -260,6 +260,14 @@ SOURCE=.\test_DataBase.c
 
 SOURCE=.\test_DataBase.h
 # End Source File
+# Begin Source File
+
+SOURCE=.\test_User.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\test_User.h
+# End Source File
 # End Group
 # Begin Group "Header Files"
 
