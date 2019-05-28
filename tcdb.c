@@ -179,7 +179,8 @@ char* DBLite_iternext(char *pTblName)
 
 void DBLite_flush()
 {
-    for(int i=0;i<_DB_MAX;i++){
+	int i = 0;
+    for(i=0;i<_DB_MAX;i++){
         if(!G_DBase.arr[i].used){
             continue;
         }        

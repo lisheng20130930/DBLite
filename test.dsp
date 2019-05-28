@@ -272,6 +272,10 @@ SOURCE=.\test_User.h
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
+# Begin Source File
+
+SOURCE=.\test_DB_Priv.h
+# End Source File
 # End Group
 # Begin Group "Resource Files"
 

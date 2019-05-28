@@ -12,8 +12,7 @@ static bool buffer2file(char *buffer, int len, char *pszFileName)
     sprintf(realName, "%s/%s", g_dataDir,pszFileName);
 	int RET = remove(realName);
     FILE *pOUT = fopen(realName, "ab+");
-	if(NULL==pOUT){
-		DBGPRINT(EERROR, ("[EJ2D] Info: OpenFailure (%s)\r\n",realName));
+	if(NULL==pOUT){		
         return false;
     }
     RET=fwrite(buffer,len,1,pOUT);

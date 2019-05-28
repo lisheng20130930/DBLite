@@ -1,59 +1,28 @@
 #include "libos.h"
 #include "litdb.h"
 #include "test_DataBase.h"
+#include "test_DB_Priv.h"
 
 
-#define DBDevice     "DBDevice.DAT"
-
-
-static _Field DeviceTable[]={
-	_FIELD(Device_t,szDeviceID,_FIELD_TYPE_STRZ,0xFFFF),
-	_FIELD(Device_t,productHead,_FIELD_TYPE_OBJECT,1),
-	_FIELD(Device_t,pExceptionHead,_FIELD_TYPE_OBJECT,2),
-	_FIELD(Device_t,createtime,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD(Device_t,lastLoginTime,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD_END,
-};
-
-static _Field ProductTable[]={
-	_FIELD(Product_t,next,_FIELD_TYPE_OBJECT,1),
-	_FIELD(Product_t,coin,_FIELD_TYPE_INT,0xFFFF),	
-	_FIELD(Product_t,sender,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD(Product_t,time,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD_END,
-};
-
-static _Field ExceptionTable[]={
-	_FIELD(Exception_t,next,_FIELD_TYPE_OBJECT,2),	
-	_FIELD(Exception_t,errorCode,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD(Exception_t,time,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD(Exception_t,handled,_FIELD_TYPE_INT,0xFFFF),
-	_FIELD_END,
-};
-
-
-static DB_Object PRO[]={
-	{DeviceTable,sizeof(Device_t)},
-	{ProductTable,sizeof(Product_t)},
-	{ExceptionTable,sizeof(Exception_t)},
-	{NULL,0}
-};
-
-
-static DB_Table DB[]={
-	{DBDevice,0},
-	{NULL,0xFFFF}
-};
-
-
-Device_t* DataBase_getDevice(char *szDeviceID)
+static Device_t* getDeviceByID(char *szDeviceID)
 {
-	return (Device_t*)DBLite_get(DBDevice,szDeviceID);
+	Device_t *pDevice = (Device_t*)DBLite_get(DBDevice,szDeviceID);
+	if(!pDevice){
+		pDevice = (Device_t*)malloc(sizeof(Device_t));
+		memset(pDevice,0x00,sizeof(Device_t));
+		pDevice->szDeviceID = strdup(szDeviceID);
+		pDevice->createtime = time(NULL);
+	}	
+	return pDevice;
 }
 
-bool DataBase_putDevice(char *szDeviceID, Device_t *pDevice)
+void updatelastLoginTime(char *szDeviceID)
 {
-	return DBLite_put(DBDevice,szDeviceID,pDevice);
+	Device_t *pDevice = getDeviceByID(szDeviceID);
+	pDevice->lastLoginTime = time(NULL);
+	
+	DBLite_put(DBDevice,szDeviceID,(void*)pDevice);
+	freeDevice(pDevice);
 }
 
 void DataBase_init(char *_dataDir)
