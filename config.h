@@ -1,5 +1,5 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef LITDB_CONFIG_H
+#define LITDB_CONFIG_H
 
 
 extern DB_Object *PRO;
